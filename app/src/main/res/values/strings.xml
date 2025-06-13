@@ -7,4 +7,9 @@
     <string name="password_hint">Password</string>
     <string name="Username_hint">Username</string>
     <string name="email_icon_desc">email_icon</string>
+
+    <string name="leading_icon">leading_icon</string>
+    <string name="event">event</string>
+    <string name="sport">sport</string>
+    <string name="acadamic">acadamic_icon</string>
 </resources>

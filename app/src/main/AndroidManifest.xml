@@ -27,6 +27,9 @@
         <activity
             android:name=".SignIn_page"
             android:exported="false" />
+        <activity
+            android:name=".News_screen"
+            android:exported="false" />
     </application>
 
 </manifest>
