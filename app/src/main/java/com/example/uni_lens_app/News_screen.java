@@ -41,8 +41,8 @@ public class News_screen extends AppCompatActivity
             Intent intent = new Intent(News_screen.this, User_info.class);
             startActivity(intent);
         } else if (id == R.id.nav_developer_info) {
-            Toast.makeText(News_screen.this, "Developer Info clicked", Toast.LENGTH_SHORT).show();
-
+            Intent intent = new Intent(News_screen.this, developer_screen.class);
+            startActivity(intent);
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

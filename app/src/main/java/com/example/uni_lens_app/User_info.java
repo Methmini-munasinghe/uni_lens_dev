@@ -1,5 +1,6 @@
 package com.example.uni_lens_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class User_info extends AppCompatActivity {
 
@@ -28,6 +32,15 @@ public class User_info extends AppCompatActivity {
             return insets;
         });
 
+        ImageButton exit_btn = findViewById(R.id.menu_icon);
+        exit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(User_info.this, News_screen.class);
+                finish();
+            }
+        });
+
         // SIGN OUT button logic
         Button signOutButton = findViewById(R.id.signOutButton);
         if (signOutButton != null) {
@@ -36,7 +49,13 @@ public class User_info extends AppCompatActivity {
                         .setMessage("Really want to sign out?")
                         .setCancelable(true)
                         .setPositiveButton("OK", (dialog, which) -> {
-                            //  sign-out logic
+                            // 🔐 Firebase sign-out
+                            FirebaseAuth.getInstance().signOut();
+
+                            // 👇 Optional: Redirect to login screen
+                            Intent intent = new Intent(User_info.this, SignIn_page.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear back stack
+                            startActivity(intent);
                             dialog.dismiss();
                         })
                         .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
