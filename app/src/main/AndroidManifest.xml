@@ -25,6 +25,9 @@
             android:name=".News_screen"
             android:exported="false" />
         <activity
+            android:name=".developer_screen"
+            android:exported="false" />
+        <activity
             android:name=".splash_screen"
             android:exported="true">
             <intent-filter>

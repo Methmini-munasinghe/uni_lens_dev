@@ -1,6 +1,10 @@
 package com.example.uni_lens_app;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +24,26 @@ public class developer_screen extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+// Reference the ImageButton
+        View menuIcon = findViewById(R.id.menu_icon);
+        // Set click listener
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(developer_screen.this, News_screen.class);
+                finish();
+            }
+        });
+
+        Button exit_btn = findViewById(R.id.exitButton);
+        exit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(developer_screen.this, News_screen.class);
+                finish();
+            }
+        });
+
     }
 }
