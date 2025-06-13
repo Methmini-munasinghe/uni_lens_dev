@@ -1,7 +1,10 @@
 package com.example.uni_lens_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -17,7 +20,7 @@ public class News_screen extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in_page);
+        setContentView(R.layout.activity_news_screen);
 
         // Initialize Drawer Layout and Navigation View
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -35,9 +38,11 @@ public class News_screen extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_user_info) {
-            // Handle User Info
+            Intent intent = new Intent(News_screen.this, User_info.class);
+            startActivity(intent);
         } else if (id == R.id.nav_developer_info) {
-            // Handle Developer Info
+            Toast.makeText(News_screen.this, "Developer Info clicked", Toast.LENGTH_SHORT).show();
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
