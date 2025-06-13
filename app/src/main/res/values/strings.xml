@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Uni_lens_app</string>
+    <string name="app_name">UniLens</string>
+    <string name="faculty_of_technology_uoc">Faculty Of Technology\nUOC</string>
+    <string name="imageView">UniLens Batch</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="password_hint">Password</string>
+    <string name="Username_hint">Username</string>
+    <string name="email_icon_desc">email_icon</string>
+
+    <string name="leading_icon">leading_icon</string>
+    <string name="event">event</string>
+    <string name="sport">sport</string>
+    <string name="acadamic">acadamic_icon</string>
 </resources>
