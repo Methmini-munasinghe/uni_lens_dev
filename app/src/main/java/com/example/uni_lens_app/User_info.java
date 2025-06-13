@@ -1,5 +1,6 @@
 package com.example.uni_lens_app;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,16 +12,28 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
 import android.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class User_info extends AppCompatActivity {
+    private String uid;
+    private String email_user;
+    private String username_user;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +44,35 @@ public class User_info extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            TextView Username = findViewById(R.id.text_user);
+            TextView Email = findViewById(R.id.user_email);
+
+            uid = user.getUid();                    // Profile photo URL (can be null)
+
+            DatabaseReference reference = FirebaseDatabase.getInstance()
+                    .getReference("Users")
+                    .child(uid);
+
+            reference.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DataSnapshot dataSnapshot = task.getResult();
+
+                    email_user = dataSnapshot.child("email").getValue(String.class);
+                    username_user = dataSnapshot.child("name").getValue(String.class);
+
+                    Username.setText("Username :  " + username_user);
+                    Email.setText("Email         :  " + email_user);
+
+                }
+
+            });
+        } else {
+            Log.d("UserInfo", "No user is signed in.");
+        }
 
         ImageButton exit_btn = findViewById(R.id.menu_icon);
         exit_btn.setOnClickListener(new View.OnClickListener() {
@@ -75,8 +117,8 @@ public class User_info extends AppCompatActivity {
                 EditText etEmail = dialogView.findViewById(R.id.et_email);
 
                 //  pre-fill with current values
-                etUsername.setText("Methmi@2003");
-                etEmail.setText("Methmi23@gmail.com");
+                etUsername.setText(username_user);
+                etEmail.setText(email_user);
 
                 AlertDialog editDialog = new AlertDialog.Builder(this)
                         .setView(dialogView)
@@ -91,7 +133,25 @@ public class User_info extends AppCompatActivity {
                     String newUsername = etUsername.getText().toString();
                     String newEmail = etEmail.getText().toString();
 
+                    // Validations
+                    if (newUsername.isEmpty()) {
+                        newUsername = username_user;
+                    }
+
+                    // Validations
+                    if (newEmail.isEmpty()) {
+                        newEmail = email_user;
+                    }
+
+                    User user_out = new User(newUsername, newEmail);
+                    DatabaseReference usersRef = FirebaseDatabase.getInstance()
+                            .getReference("Users");
+                    usersRef.child(uid).setValue(user_out);
+
                     editDialog.dismiss();
+                    Intent intent = getIntent();
+                    finish(); // Finish current activity
+                    startActivity(intent); // Restart the same activity
                 });
 
                 btnCancel.setOnClickListener(cancelView -> editDialog.dismiss());
