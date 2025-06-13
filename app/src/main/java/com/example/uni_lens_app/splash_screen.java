@@ -9,7 +9,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 
 public class splash_screen extends AppCompatActivity {
@@ -28,7 +27,7 @@ public class splash_screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(splash_screen.this, MainActivity.class));
+                startActivity(new Intent(splash_screen.this, SignIn_page.class));
                 finish();
             }
         }, 2000);
