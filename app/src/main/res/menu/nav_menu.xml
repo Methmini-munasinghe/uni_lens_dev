@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- User Info Item -->
+    <item
+        android:id="@+id/nav_user_info"
+        android:title="User Info"
+        android:icon="@drawable/user_icon" />
+
+    <!-- Developer Info Item -->
+    <item
+        android:id="@+id/nav_developer_info"
+        android:title="Developer's Info"
+        android:icon="@drawable/user_icon" />
+
+</menu>
