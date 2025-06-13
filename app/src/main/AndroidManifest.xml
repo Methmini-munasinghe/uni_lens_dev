@@ -22,9 +22,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:name=".SignUp_page"
+            android:exported="false" />
+        <activity
+            android:name=".SignIn_page"
+            android:exported="false" />
     </application>
 
 </manifest>

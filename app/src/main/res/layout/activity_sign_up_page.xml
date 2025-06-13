@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    tools:context=".SignUp_page">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/gray_border"
+        android:contentDescription="@string/imageView"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/unilens_batch" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        android:backgroundTint="#5481B1"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.85">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:gravity="center">
+
+            <!-- Username -->
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/edit_text_bg"
+                android:drawableStart="@drawable/user_icon"
+                android:drawablePadding="8dp"
+                android:hint="Username"
+                android:padding="12dp"
+                android:textColor="#000"
+                android:textColorHint="#B0B0B0"/>
+
+            <!-- Email -->
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/edit_text_bg"
+                android:drawableStart="@drawable/email_icon"
+                android:drawablePadding="8dp"
+                android:hint="Email"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#B0B0B0"/>
+
+            <!-- Password -->
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/edit_text_bg"
+                android:drawableStart="@drawable/password_icon"
+                android:drawablePadding="8dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColor="#222222"
+                android:textColorHint="#B0B0B0"/>
+
+            <!-- Confirm Password -->
+            <EditText
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edit_text_bg"
+                android:drawableStart="@drawable/password_icon"
+                android:drawablePadding="8dp"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColor="#222222"
+                android:textColorHint="#B0B0B0"/>
+
+            <!-- Sign In Link -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signupButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button"
+                android:text="@string/sign_up"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/signinText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:minHeight="48dp"
+                android:text="Already have an account? SIGN-IN"
+                android:textColor="#ffffff"
+                android:clickable="true"
+                android:focusable="true"
+                android:textIsSelectable="false"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
