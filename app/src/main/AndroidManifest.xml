@@ -21,11 +21,14 @@
         <activity
             android:name=".SignIn_page"
             android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".News_screen"-->
+<!--            android:exported="false" />-->
         <activity
-            android:name=".News_screen"
+            android:name=".developer_screen"
             android:exported="false" />
         <activity
-            android:name=".splash_screen"
+            android:name=".News_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
