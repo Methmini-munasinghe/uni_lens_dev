@@ -74,7 +74,7 @@ public class SignIn_page extends AppCompatActivity {
             auth.signInWithEmailAndPassword(email, pass)
                     .addOnSuccessListener(authResult -> {
                         Toast.makeText(SignIn_page.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SignIn_page.this, splash_screen.class));
+                        startActivity(new Intent(SignIn_page.this, News_screen.class));
                         finish();
                     })
                     .addOnFailureListener(e -> {
