@@ -97,6 +97,7 @@
                 android:elevation="2dp">
 
                 <TextView
+                    android:id="@+id/text_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Username :  Methmi@2003"
@@ -106,6 +107,7 @@
                     android:layout_marginBottom="4dp"/>
 
                 <TextView
+                    android:id="@+id/user_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email         :  Methmi23@gmail.com"

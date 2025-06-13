@@ -17,6 +17,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class SignUp_page extends AppCompatActivity {
@@ -136,11 +140,21 @@ public class SignUp_page extends AppCompatActivity {
             return;
         }
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference usersRef = database.getReference("Users");
+        // Create a user object
+        User user_out = new User(name, email);
+
         // Create user with FirebaseAuth
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUp_page.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    FirebaseUser user = task.getResult().getUser(); // ✅ Get new user
+                    String uid = user.getUid(); // ✅ Extract UID
+                    // Save user under UID
+                    usersRef.child(uid).setValue(user_out);
+
                     Toast.makeText(SignUp_page.this, "Sign-Up successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignUp_page.this, SignIn_page.class));
                 } else {
